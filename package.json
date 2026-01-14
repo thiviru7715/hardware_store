@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/thiviru7715/Hardware_store#readme",
   "dependencies": {
+    "antd": "^6.2.0",
+    "axios": "^1.13.2",
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "mysql2": "^3.16.0"
