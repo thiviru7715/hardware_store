@@ -1,22 +1,30 @@
 // Main App component
-import { Layout, Typography } from "antd";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import MainLayout from "./components/MainLayout";
+import Dashboard from "./pages/Dashboard";
 import InventoryTable from "./components/InventoryTable";
-
-const { Header, Content } = Layout;
-const { Title } = Typography;
 
 function App() {
   return (
-    <Layout>
-      <Header>
-        <Title style={{ color: "white" }} level={3}>
-          Hardware Store Inventory
-        </Title>
-      </Header>
-      <Content style={{ padding: 20 }}>
-        <InventoryTable />
-      </Content>
-    </Layout>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#e53935', // Red theme
+        },
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="inventory" element={<InventoryTable />} />
+            {/* Placeholders for other routes */}
+            <Route path="*" element={<div style={{ padding: 20 }}>Page Under Construction</div>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ConfigProvider>
   );
 }
 
