@@ -1,5 +1,6 @@
-import { Table, Button, InputNumber, message, Modal, Form, Input } from "antd";
+import { Table, Button, InputNumber, message, Modal, Form, Input, Space } from "antd";
 import { useEffect, useState } from "react";
+import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import API from "../api";
 
 function InventoryTable() {
@@ -64,35 +65,91 @@ function InventoryTable() {
     };
 
     const columns = [
-        { title: "Item", dataIndex: "name" },
-        { title: "Price", dataIndex: "price" },
-        { title: "Quantity", dataIndex: "quantity" },
+        {
+            title: "Item",
+            dataIndex: "name",
+            ellipsis: true,
+        },
+        {
+            title: "Price",
+            dataIndex: "price",
+            render: (price) => `Rs. ${price?.toFixed(2) || '0.00'}`,
+            width: 100,
+        },
+        {
+            title: "Qty",
+            dataIndex: "quantity",
+            width: 60,
+        },
         {
             title: "Actions",
+            width: 150,
             render: (_, record) => (
-                <>
-                    <Button onClick={() => increase(record.id)}>+</Button>
-                    <Button danger onClick={() => decrease(record.id)} style={{ marginLeft: 8 }}>
-                        -
-                    </Button>
-                    <Button type="primary" danger onClick={() => deleteItem(record.id)} style={{ marginLeft: 8 }}>
-                        Delete
-                    </Button>
-                </>
+                <Space size="small" wrap>
+                    <Button
+                        size="small"
+                        icon={<PlusOutlined />}
+                        onClick={() => increase(record.id)}
+                    />
+                    <Button
+                        size="small"
+                        danger
+                        icon={<MinusOutlined />}
+                        onClick={() => decrease(record.id)}
+                    />
+                    <Button
+                        size="small"
+                        type="primary"
+                        danger
+                        icon={<DeleteOutlined />}
+                        onClick={() => deleteItem(record.id)}
+                    />
+                </Space>
             )
         }
     ];
 
     return (
         <div>
-            <div style={{ marginBottom: 16, display: 'flex', gap: 10 }}>
-                <InputNumber min={1} value={amount} onChange={setAmount} addonBefore="Adjust Amount" />
-                <Button type="primary" onClick={() => setIsModalOpen(true)}>Add Item</Button>
+            <div style={{
+                marginBottom: 16,
+                display: 'flex',
+                gap: 10,
+                flexWrap: 'wrap',
+                alignItems: 'center'
+            }}>
+                <InputNumber
+                    min={1}
+                    value={amount}
+                    onChange={setAmount}
+                    addonBefore="Qty"
+                    style={{ width: 120 }}
+                />
+                <Button type="primary" onClick={() => setIsModalOpen(true)}>
+                    Add Item
+                </Button>
             </div>
 
-            <Table rowKey="id" columns={columns} dataSource={items} />
+            <Table
+                rowKey="id"
+                columns={columns}
+                dataSource={items}
+                scroll={{ x: 500 }}
+                pagination={{
+                    pageSize: 10,
+                    responsive: true,
+                    showSizeChanger: false
+                }}
+            />
 
-            <Modal title="Add New Item" open={isModalOpen} onCancel={() => setIsModalOpen(false)} footer={null}>
+            <Modal
+                title="Add New Item"
+                open={isModalOpen}
+                onCancel={() => setIsModalOpen(false)}
+                footer={null}
+                width="90%"
+                style={{ maxWidth: 400 }}
+            >
                 <Form form={form} layout="vertical" onFinish={handleAddObject}>
                     <Form.Item name="name" label="Item Name" rules={[{ required: true }]}>
                         <Input />
@@ -115,3 +172,4 @@ function InventoryTable() {
 }
 
 export default InventoryTable;
+
