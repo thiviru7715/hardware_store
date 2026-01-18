@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Form, Input, Button, Typography, message, Tabs } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import API from '../api';
+import { usersApi } from '../localStorageApi';
 
 const { Title, Text } = Typography;
 
@@ -16,9 +16,8 @@ const AuthPage = ({ onLogin }) => {
     const handleLogin = async (values) => {
         setLoading(true);
         try {
-            const res = await API.post('/users/login', values);
+            const res = await usersApi.login(values);
             message.success('Login successful!');
-            localStorage.setItem('user', JSON.stringify(res.data.user));
             onLogin(res.data.user);
             navigate('/');
         } catch (error) {
@@ -31,7 +30,7 @@ const AuthPage = ({ onLogin }) => {
     const handleRegister = async (values) => {
         setLoading(true);
         try {
-            const res = await API.post('/users/register', values);
+            await usersApi.register(values);
             message.success('Registration successful! Please login.');
             setActiveTab('login');
             registerForm.resetFields();

@@ -1,11 +1,12 @@
 // Main App component
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import InventoryTable from "./components/InventoryTable";
 import AuthPage from "./pages/AuthPage";
+import { usersApi } from "./localStorageApi";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -13,9 +14,9 @@ function App() {
 
   useEffect(() => {
     // Check if user is already logged in
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const currentUser = usersApi.getCurrentUser();
+    if (currentUser) {
+      setUser(currentUser);
     }
     setLoading(false);
   }, []);
@@ -25,7 +26,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    usersApi.logout();
     setUser(null);
   };
 
@@ -41,7 +42,7 @@ function App() {
         },
       }}
     >
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {!user ? (
             // Not logged in - show auth page
@@ -58,10 +59,9 @@ function App() {
             </Route>
           )}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ConfigProvider>
   );
 }
 
 export default App;
-

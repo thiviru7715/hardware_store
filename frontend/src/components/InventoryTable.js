@@ -1,7 +1,7 @@
 import { Table, Button, InputNumber, message, Modal, Form, Input, Space } from "antd";
 import { useEffect, useState } from "react";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
-import API from "../api";
+import { itemsApi } from "../localStorageApi";
 
 function InventoryTable() {
     const [items, setItems] = useState([]);
@@ -11,7 +11,7 @@ function InventoryTable() {
 
     const loadItems = async () => {
         try {
-            const res = await API.get("/items");
+            const res = await itemsApi.getAll();
             setItems(res.data);
         } catch (error) {
             message.error("Failed to load items");
@@ -24,7 +24,7 @@ function InventoryTable() {
 
     const increase = async (id) => {
         try {
-            await API.put(`/items/increase/${id}`, { amount });
+            await itemsApi.increase(id, amount);
             message.success("Stock increased");
             loadItems();
         } catch (error) {
@@ -34,7 +34,7 @@ function InventoryTable() {
 
     const decrease = async (id) => {
         try {
-            await API.put(`/items/decrease/${id}`, { amount });
+            await itemsApi.decrease(id, amount);
             message.success("Stock decreased");
             loadItems();
         } catch {
@@ -44,7 +44,7 @@ function InventoryTable() {
 
     const deleteItem = async (id) => {
         try {
-            await API.delete(`/items/${id}`);
+            await itemsApi.delete(id);
             message.success("Item deleted");
             loadItems();
         } catch (error) {
@@ -54,7 +54,7 @@ function InventoryTable() {
 
     const handleAddObject = async (values) => {
         try {
-            await API.post("/items", values);
+            await itemsApi.create(values);
             message.success("Item added successfully");
             setIsModalOpen(false);
             form.resetFields();
@@ -172,4 +172,3 @@ function InventoryTable() {
 }
 
 export default InventoryTable;
-

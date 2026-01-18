@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Typography, Table, Spin } from 'antd';
-import API from '../api';
+import { itemsApi } from '../localStorageApi';
 
 const { Title } = Typography;
 
@@ -11,7 +11,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const res = await API.get('/items');
+                const res = await itemsApi.getAll();
                 setItems(res.data);
             } catch (error) {
                 console.error('Failed to fetch items:', error);
@@ -47,6 +47,7 @@ const Dashboard = () => {
                         columns={columns}
                         dataSource={items}
                         pagination={{ pageSize: 10 }}
+                        scroll={{ x: 400 }}
                     />
                 )}
             </Card>
@@ -55,4 +56,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
