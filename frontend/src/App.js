@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="inventory" element={<InventoryTable />} />
+            <Route path="reports" element={<InventoryTable />} />
             {/* Placeholders for other routes */}
             <Route path="*" element={<div style={{ padding: 20 }}>Page Under Construction</div>} />
           </Route>

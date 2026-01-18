@@ -26,13 +26,7 @@ const MainLayout = () => {
 
     const menuItems = [
         { key: '/', icon: <AppstoreOutlined />, label: 'Dashboard' },
-        { key: '/inventory', icon: <ShopOutlined />, label: 'Inventory' },
-        { key: '/sales', icon: <ShoppingCartOutlined />, label: 'Sales' },
-        { key: '/purchases', icon: <ShoppingOutlined />, label: 'Purchases' },
-        { key: '/integrations', icon: <TeamOutlined />, label: 'Integrations' },
-        { key: '/channels', icon: <FolderOpenOutlined />, label: 'Active Channels' },
-        { key: '/reports', icon: <BarChartOutlined />, label: 'Reports' },
-        { key: '/documents', icon: <FileTextOutlined />, label: 'Documents' },
+        { key: '/reports', icon: <FileTextOutlined />, label: 'Reports' }, // Renamed Inventory to Reports as requested
     ];
 
     return (
