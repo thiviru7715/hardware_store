@@ -17,6 +17,8 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
 
+import InstallPrompt from './InstallPrompt';
+
 const MainLayout = ({ user, onLogout }) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -48,6 +50,9 @@ const MainLayout = ({ user, onLogout }) => {
                 items={menuItems}
                 onClick={handleMenuClick}
             />
+            <div style={{ padding: '10px' }}>
+                <InstallPrompt mobile={true} />
+            </div>
         </>
     );
 
@@ -124,6 +129,9 @@ const MainLayout = ({ user, onLogout }) => {
                         />
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div className="desktop-install-btn">
+                            <InstallPrompt />
+                        </div>
                         <span style={{ fontWeight: 500 }} className="header-text">{user?.name || 'User'}</span>
                         <Badge dot><BellOutlined style={{ fontSize: '18px', cursor: 'pointer' }} /></Badge>
                         <SettingOutlined style={{ fontSize: '18px', cursor: 'pointer' }} />
@@ -149,10 +157,12 @@ const MainLayout = ({ user, onLogout }) => {
                     .mobile-menu-btn { display: none !important; }
                     .header-text { display: inline !important; }
                     .header-icon { display: inline !important; }
+                    .desktop-install-btn { display: block !important; }
                 }
                 @media (max-width: 991px) {
                     .desktop-sider { display: none !important; }
                     .mobile-menu-btn { display: inline-flex !important; }
+                    .desktop-install-btn { display: none !important; }
                 }
                 @media (max-width: 576px) {
                     .ant-table { font-size: 12px; }
