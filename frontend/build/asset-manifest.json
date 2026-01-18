@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Hardware_store/static/css/main.d802e3cd.css",
-    "main.js": "/Hardware_store/static/js/main.d4c39437.js",
+    "main.js": "/Hardware_store/static/js/main.73a9eb1e.js",
     "index.html": "/Hardware_store/index.html",
     "main.d802e3cd.css.map": "/Hardware_store/static/css/main.d802e3cd.css.map",
-    "main.d4c39437.js.map": "/Hardware_store/static/js/main.d4c39437.js.map"
+    "main.73a9eb1e.js.map": "/Hardware_store/static/js/main.73a9eb1e.js.map"
   },
   "entrypoints": [
     "static/css/main.d802e3cd.css",
-    "static/js/main.d4c39437.js"
+    "static/js/main.73a9eb1e.js"
   ]
 }
