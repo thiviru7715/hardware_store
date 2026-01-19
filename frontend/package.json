@@ -1,7 +1,7 @@
 {
     "name": "hardware-store",
     "version": "1.0.0",
-    "homepage": "https://thiviru7715.github.io/Hardware_store",
+    "homepage": ".",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
