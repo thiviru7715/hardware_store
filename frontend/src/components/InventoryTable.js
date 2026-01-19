@@ -73,7 +73,7 @@ function InventoryTable() {
         {
             title: "Price",
             dataIndex: "price",
-            render: (price) => `Rs. ${price?.toFixed(2) || '0.00'}`,
+            render: (price) => `Rs. ${Number(price)?.toFixed(2) || '0.00'}`,
             width: 100,
         },
         {

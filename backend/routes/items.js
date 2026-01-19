@@ -1,88 +1,96 @@
-// Items routes - Using JSON file storage
+// Items routes - Using PostgreSQL
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
-const path = require("path");
-
-const dataFile = path.join(__dirname, "..", "items.json");
-
-// Initialize file if it doesn't exist
-if (!fs.existsSync(dataFile)) {
-  fs.writeFileSync(dataFile, JSON.stringify([], null, 2));
-}
-
-// Helper functions
-const readItems = () => {
-  const data = fs.readFileSync(dataFile, "utf-8");
-  return JSON.parse(data);
-};
-
-const writeItems = (items) => {
-  fs.writeFileSync(dataFile, JSON.stringify(items, null, 2));
-};
+const pool = require("../db");
 
 // Get all items
-router.get("/", (req, res) => {
-  const items = readItems();
-  res.json(items);
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM items ORDER BY id");
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Error fetching items:", err);
+    res.status(500).json({ message: "Error fetching items" });
+  }
 });
 
 // Add new item
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { name, price, quantity } = req.body;
-  const items = readItems();
-  const newItem = {
-    id: Date.now(),
-    name,
-    price: parseFloat(price),
-    quantity: parseInt(quantity)
-  };
-  items.push(newItem);
-  writeItems(items);
-  res.json({ message: "Item added", id: newItem.id });
+  try {
+    const result = await pool.query(
+      "INSERT INTO items (name, price, quantity) VALUES ($1, $2, $3) RETURNING id",
+      [name, parseFloat(price), parseInt(quantity)]
+    );
+    res.json({ message: "Item added", id: result.rows[0].id });
+  } catch (err) {
+    console.error("Error adding item:", err);
+    res.status(500).json({ message: "Error adding item" });
+  }
 });
 
 // Increase stock
-router.put("/increase/:id", (req, res) => {
+router.put("/increase/:id", async (req, res) => {
   const { amount } = req.body;
-  const items = readItems();
-  const item = items.find(i => i.id === parseInt(req.params.id));
-  if (item) {
-    item.quantity += amount;
-    writeItems(items);
+  try {
+    const result = await pool.query(
+      "UPDATE items SET quantity = quantity + $1 WHERE id = $2 RETURNING *",
+      [amount, parseInt(req.params.id)]
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: "Item not found" });
+    }
     res.json({ message: "Stock increased" });
-  } else {
-    res.status(404).json({ message: "Item not found" });
+  } catch (err) {
+    console.error("Error increasing stock:", err);
+    res.status(500).json({ message: "Error increasing stock" });
   }
 });
 
 // Decrease stock
-router.put("/decrease/:id", (req, res) => {
+router.put("/decrease/:id", async (req, res) => {
   const { amount } = req.body;
-  const items = readItems();
-  const item = items.find(i => i.id === parseInt(req.params.id));
-  if (!item) {
-    return res.status(404).json({ message: "Item not found" });
+  try {
+    // First check current quantity
+    const checkResult = await pool.query(
+      "SELECT quantity FROM items WHERE id = $1",
+      [parseInt(req.params.id)]
+    );
+
+    if (checkResult.rowCount === 0) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    if (checkResult.rows[0].quantity < amount) {
+      return res.status(400).json({ message: "Not enough stock" });
+    }
+
+    await pool.query(
+      "UPDATE items SET quantity = quantity - $1 WHERE id = $2",
+      [amount, parseInt(req.params.id)]
+    );
+    res.json({ message: "Stock decreased" });
+  } catch (err) {
+    console.error("Error decreasing stock:", err);
+    res.status(500).json({ message: "Error decreasing stock" });
   }
-  if (item.quantity < amount) {
-    return res.status(400).json({ message: "Not enough stock" });
-  }
-  item.quantity -= amount;
-  writeItems(items);
-  res.json({ message: "Stock decreased" });
 });
 
 // Delete item
-router.delete("/:id", (req, res) => {
-  let items = readItems();
-  const originalLength = items.length;
-  items = items.filter(i => i.id !== parseInt(req.params.id));
-  if (items.length === originalLength) {
-    return res.status(404).json({ message: "Item not found" });
+router.delete("/:id", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "DELETE FROM items WHERE id = $1",
+      [parseInt(req.params.id)]
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+    res.json({ message: "Item deleted" });
+  } catch (err) {
+    console.error("Error deleting item:", err);
+    res.status(500).json({ message: "Error deleting item" });
   }
-  writeItems(items);
-  res.json({ message: "Item deleted" });
 });
 
 module.exports = router;
-

@@ -28,7 +28,7 @@ const Dashboard = () => {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            render: (price) => `Rs. ${price?.toFixed(2) || '0.00'}`
+            render: (price) => `Rs. ${Number(price)?.toFixed(2) || '0.00'}`
         },
         { title: 'Quantity', dataIndex: 'quantity', key: 'quantity' },
     ];

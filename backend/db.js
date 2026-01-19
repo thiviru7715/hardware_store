@@ -1,17 +1,23 @@
-// Database connection
+// PostgreSQL Database connection (Neon Serverless)
 require("dotenv").config();
-const mysql = require("mysql2");
+const { Pool } = require("pg");
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+// Use DATABASE_URL for Neon connection string
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-db.connect(err => {
-  if (err) throw err;
-  console.log("Database connected");
+// Test connection
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error("Database connection error:", err.message);
+  } else {
+    console.log("Neon PostgreSQL Database connected");
+    release();
+  }
 });
 
-module.exports = db;
+module.exports = pool;
