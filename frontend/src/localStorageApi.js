@@ -42,6 +42,19 @@ export const usersApi = {
         return response;
     },
 
+    loginWithPin: async (pin) => {
+        const response = await API.post("/users/login-pin", { pin });
+        if (response.data.user) {
+            localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(response.data.user));
+        }
+        return response;
+    },
+
+    updatePin: async (email, pin) => {
+        const response = await API.put("/users/pin", { email, pin });
+        return response;
+    },
+
     logout: () => {
         localStorage.removeItem(CURRENT_USER_KEY);
         return Promise.resolve({ data: { message: 'Logged out' } });

@@ -134,7 +134,7 @@ const MainLayout = ({ user, onLogout }) => {
                         </div>
                         <span style={{ fontWeight: 500 }} className="header-text">{user?.name || 'User'}</span>
                         <Badge dot><BellOutlined style={{ fontSize: '18px', cursor: 'pointer' }} /></Badge>
-                        <SettingOutlined style={{ fontSize: '18px', cursor: 'pointer' }} />
+                        <SettingOutlined style={{ fontSize: '18px', cursor: 'pointer' }} onClick={() => navigate('/settings')} />
                         <Button
                             type="text"
                             icon={<LogoutOutlined />}

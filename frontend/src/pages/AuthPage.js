@@ -11,6 +11,7 @@ const AuthPage = ({ onLogin }) => {
     const [activeTab, setActiveTab] = useState('login');
     const navigate = useNavigate();
     const [loginForm] = Form.useForm();
+    const [pinForm] = Form.useForm();
     const [registerForm] = Form.useForm();
 
     const handleLogin = async (values) => {
@@ -22,6 +23,20 @@ const AuthPage = ({ onLogin }) => {
             navigate('/');
         } catch (error) {
             message.error(error.response?.data?.message || 'Login failed');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handlePinLogin = async (values) => {
+        setLoading(true);
+        try {
+            const res = await usersApi.loginWithPin(values.pin);
+            message.success('Login successful!');
+            onLogin(res.data.user);
+            navigate('/');
+        } catch (error) {
+            message.error(error.response?.data?.message || 'PIN Login failed');
         } finally {
             setLoading(false);
         }
@@ -79,6 +94,40 @@ const AuthPage = ({ onLogin }) => {
                             loading={loading}
                         >
                             Sign In
+                        </Button>
+                    </Form.Item>
+                </Form>
+            )
+        },
+        {
+            key: 'pin',
+            label: 'PIN Login',
+            children: (
+                <Form form={pinForm} layout="vertical" onFinish={handlePinLogin}>
+                    <Form.Item
+                        name="pin"
+                        rules={[
+                            { required: true, message: 'Please enter your PIN' },
+                            { len: 4, message: 'PIN must be 4 digits' }
+                        ]}
+                    >
+                        <Input.Password
+                            prefix={<LockOutlined />}
+                            placeholder="Enter 4-digit PIN"
+                            maxLength={4}
+                            size="large"
+                            style={{ textAlign: 'center', letterSpacing: '8px', fontSize: '24px' }}
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            block
+                            size="large"
+                            loading={loading}
+                        >
+                            Enter PIN
                         </Button>
                     </Form.Item>
                 </Form>

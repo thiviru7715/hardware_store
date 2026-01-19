@@ -26,6 +26,28 @@ app.use("/users", require("./routes/users"));
 // Use PORT from environment (Render provides this)
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+const pool = require("./db");
+
+// Database migration check
+const ensurePinColumn = async () => {
+  try {
+    const result = await pool.query(`
+      SELECT column_name 
+      FROM information_schema.columns 
+      WHERE table_name='users' AND column_name='pin';
+    `);
+
+    if (result.rowCount === 0) {
+      console.log("Adding 'pin' column to users table...");
+      await pool.query("ALTER TABLE users ADD COLUMN pin VARCHAR(10);");
+      console.log("'pin' column added successfully.");
+    }
+  } catch (err) {
+    console.error("Error checking/adding pin column:", err);
+  }
+};
+
+app.listen(PORT, async () => {
+  await ensurePinColumn();
   console.log(`Backend running on port ${PORT}`);
 });
