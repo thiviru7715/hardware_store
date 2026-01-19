@@ -23,6 +23,10 @@ export const itemsApi = {
 
     delete: (id) => {
         return API.delete(`/items/${id}`);
+    },
+
+    update: (id, itemData) => {
+        return API.put(`/items/${id}`, itemData);
     }
 };
 

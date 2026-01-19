@@ -93,4 +93,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Update item (name, price, quantity)
+router.put("/:id", async (req, res) => {
+  const { name, price, quantity } = req.body;
+  try {
+    const result = await pool.query(
+      "UPDATE items SET name = COALESCE($1, name), price = COALESCE($2, price), quantity = COALESCE($3, quantity) WHERE id = $4 RETURNING *",
+      [name, price !== undefined ? parseFloat(price) : null, quantity !== undefined ? parseInt(quantity) : null, parseInt(req.params.id)]
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+    res.json({ message: "Item updated", item: result.rows[0] });
+  } catch (err) {
+    console.error("Error updating item:", err);
+    res.status(500).json({ message: "Error updating item" });
+  }
+});
+
 module.exports = router;
