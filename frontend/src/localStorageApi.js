@@ -70,4 +70,23 @@ export const usersApi = {
     }
 };
 
-export default { itemsApi, usersApi };
+// Employees API - connects to backend /employees endpoints
+export const employeesApi = {
+    getAll: () => {
+        return API.get("/employees");
+    },
+
+    create: (employeeData) => {
+        return API.post("/employees", employeeData);
+    },
+
+    update: (id, employeeData) => {
+        return API.put(`/employees/${id}`, employeeData);
+    },
+
+    delete: (id) => {
+        return API.delete(`/employees/${id}`);
+    }
+};
+
+export default { itemsApi, usersApi, employeesApi };

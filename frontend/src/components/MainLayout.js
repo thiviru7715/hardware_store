@@ -10,7 +10,8 @@ import {
     MenuOutlined,
     CloseOutlined,
     LogoutOutlined,
-    SafetyOutlined
+    SafetyOutlined,
+    DollarOutlined
 } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
@@ -27,6 +28,7 @@ const MainLayout = ({ user, onLogout }) => {
     const menuItems = [
         { key: '/', icon: <AppstoreOutlined />, label: 'Dashboard' },
         { key: '/reports', icon: <FileTextOutlined />, label: 'Reports' },
+        { key: '/salaries', icon: <DollarOutlined />, label: 'Salaries' },
         { key: '/settings', icon: <SettingOutlined />, label: 'Settings' },
     ];
 
@@ -233,6 +235,7 @@ const MainLayout = ({ user, onLogout }) => {
                         <Title level={4} style={{ margin: 0 }} className="page-title">
                             {location.pathname === '/' && 'Dashboard'}
                             {location.pathname === '/reports' && 'Reports'}
+                            {location.pathname === '/salaries' && 'Salaries'}
                             {location.pathname === '/settings' && 'Settings'}
                         </Title>
                     </div>

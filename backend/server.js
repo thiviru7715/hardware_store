@@ -22,6 +22,7 @@ app.get("/health", (req, res) => {
 // API routes
 app.use("/items", require("./routes/items"));
 app.use("/users", require("./routes/users"));
+app.use("/employees", require("./routes/employees"));
 
 // Use PORT from environment (Render provides this)
 const PORT = process.env.PORT || 5000;
@@ -47,7 +48,29 @@ const ensurePinColumn = async () => {
   }
 };
 
+// Create employees table if it doesn't exist
+const ensureEmployeesTable = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS employees (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        position VARCHAR(255),
+        salary DECIMAL(10, 2) NOT NULL DEFAULT 0,
+        phone VARCHAR(20),
+        email VARCHAR(255),
+        hire_date DATE DEFAULT CURRENT_DATE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log("Employees table ready.");
+  } catch (err) {
+    console.error("Error creating employees table:", err);
+  }
+};
+
 app.listen(PORT, async () => {
   await ensurePinColumn();
+  await ensureEmployeesTable();
   console.log(`Backend running on port ${PORT}`);
 });

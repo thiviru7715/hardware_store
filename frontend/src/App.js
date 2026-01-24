@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import InventoryTable from "./components/InventoryTable";
 import AuthPage from "./pages/AuthPage";
 import SettingsPage from "./pages/SettingsPage";
+import SalaryPage from "./pages/SalaryPage";
 import { usersApi } from "./localStorageApi";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/" element={<MainLayout user={user} onLogout={handleLogout} />}>
               <Route index element={<Dashboard />} />
               <Route path="reports" element={<InventoryTable />} />
+              <Route path="salaries" element={<SalaryPage />} />
               <Route path="settings" element={<SettingsPage user={user} />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>

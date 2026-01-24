@@ -23,3 +23,15 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_users_email ON users (email);
+
+-- Employees table for salary management
+CREATE TABLE IF NOT EXISTS employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    position VARCHAR(255),
+    salary DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    phone VARCHAR(20),
+    email VARCHAR(255),
+    hire_date DATE DEFAULT CURRENT_DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
