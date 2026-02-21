@@ -278,10 +278,52 @@ const MainLayout = ({ user, onLogout }) => {
                     minHeight: 'calc(100vh - 64px)',
                     background: '#f8f9fa',
                     overflowY: 'auto'
-                }}>
+                }} className="main-content">
                     <Outlet />
                 </Content>
             </Layout>
+
+            {/* ── Mobile Bottom Nav ──────────────────────── */}
+            <div className="mobile-bottom-nav" style={{
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '60px',
+                background: '#fff',
+                borderTop: '1px solid #f0f0f0',
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+                zIndex: 200,
+                boxShadow: '0 -2px 12px rgba(0,0,0,0.08)',
+            }}>
+                {menuItems.map(item => {
+                    const active = location.pathname === item.key;
+                    return (
+                        <button
+                            key={item.key}
+                            onClick={() => handleMenuClick({ key: item.key })}
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '2px',
+                                border: 'none',
+                                background: 'none',
+                                cursor: 'pointer',
+                                padding: '6px 12px',
+                                borderRadius: '12px',
+                                transition: 'background 0.2s',
+                                color: active ? '#e53935' : '#8c8c8c',
+                            }}
+                        >
+                            {React.cloneElement(item.icon, { style: { fontSize: 20 } })}
+                            <span style={{ fontSize: 10, fontWeight: active ? 600 : 400 }}>{item.label}</span>
+                        </button>
+                    );
+                })}
+            </div>
 
             {/* CSS for responsive design */}
             <style>{`
@@ -311,6 +353,12 @@ const MainLayout = ({ user, onLogout }) => {
                     .desktop-install-btn { display: none !important; }
                     .desktop-settings-btn { display: none !important; }
                     .page-title { display: none !important; }
+                }
+                /* Mobile: ≤767px — show bottom nav, hide drawer trigger */
+                @media (max-width: 767px) {
+                    .mobile-bottom-nav { display: flex !important; }
+                    .mobile-menu-btn { display: none !important; }
+                    .main-content { padding-bottom: 72px !important; }
                 }
                 @media (max-width: 576px) {
                     .ant-table { font-size: 12px; }
