@@ -11,7 +11,7 @@ import { itemsApi } from '../localStorageApi';
 
 const { Title, Text } = Typography;
 
-/* ─── tiny stat card ─────────────────────────────────────────────── */
+/* ─── tiny stat card ───────────────────────── */
 const StatCard = ({ icon, label, value, color, bg }) => (
     <div style={{
         background: '#fff',
