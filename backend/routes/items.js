@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Increase stock
+// Increase stock at once
 router.put("/increase/:id", async (req, res) => {
   const { amount } = req.body;
   try {
