@@ -72,25 +72,27 @@ const SettingsPage = ({ user }) => {
             {/* Security Settings */}
             <Card
                 title={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <div style={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '10px',
-                            background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '12px',
+                            background: 'rgba(239, 68, 68, 0.08)',
+                            color: '#ef4444',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                            <SafetyOutlined style={{ color: 'white', fontSize: '18px' }} />
+                            <LockOutlined style={{ fontSize: '20px' }} />
                         </div>
-                        <span style={{ fontWeight: '600' }}>PIN Security</span>
+                        <span style={{ fontWeight: '700', fontSize: '18px', letterSpacing: '-0.5px' }}>PIN Authentication</span>
                     </div>
                 }
                 style={{
-                    borderRadius: '20px',
-                    border: 'none',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
+                    borderRadius: '24px',
+                    border: '1px solid rgba(0,0,0,0.02)',
+                    boxShadow: '0 10px 30px -5px rgba(0,0,0,0.04)',
+                    background: '#fff'
                 }}
                 bodyStyle={{ padding: '24px' }}
             >
