@@ -35,31 +35,34 @@ const SettingsPage = ({ user }) => {
             {/* Profile Header */}
             <Card
                 style={{
-                    borderRadius: '20px',
-                    marginBottom: '16px',
-                    background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-                    border: 'none'
+                    borderRadius: '24px',
+                    marginBottom: '24px',
+                    background: 'linear-gradient(135deg, #111827 0%, #1f2937 100%)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -6px rgba(0,0,0,0.04)',
+                    overflow: 'hidden',
                 }}
-                bodyStyle={{ padding: '24px' }}
+                bodyStyle={{ padding: '32px' }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                     <Avatar
-                        size={64}
+                        size={80}
                         style={{
-                            background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                            fontSize: '28px',
-                            fontWeight: 'bold',
-                            boxShadow: '0 8px 24px rgba(229, 57, 53, 0.3)'
+                            background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+                            fontSize: '32px',
+                            fontWeight: '800',
+                            boxShadow: '0 8px 30px rgba(239, 68, 68, 0.4)',
+                            border: '4px solid rgba(255,255,255,0.1)'
                         }}
                     >
                         {user?.name?.charAt(0).toUpperCase() || 'U'}
                     </Avatar>
                     <div style={{ flex: 1 }}>
-                        <Title level={4} style={{ margin: 0, color: 'white' }}>
+                        <Title level={3} style={{ margin: 0, color: 'white', letterSpacing: '-0.5px' }}>
                             {user?.name || 'User'}
                         </Title>
-                        <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>
-                            <MailOutlined style={{ marginRight: '6px' }} />
+                        <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: '15px', marginTop: '4px', display: 'block' }}>
+                            <MailOutlined style={{ marginRight: '8px', color: '#ef4444' }} />
                             {user?.email || 'email@example.com'}
                         </Text>
                     </div>
