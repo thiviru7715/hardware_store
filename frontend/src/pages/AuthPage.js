@@ -310,28 +310,28 @@ const AuthPage = ({ onLogin }) => {
                 }}
                 bodyStyle={{ padding: '40px 32px' }}
             >
-                <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
                     <div style={{
-                        width: '70px',
-                        height: '70px',
-                        background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                        borderRadius: '20px',
+                        width: '80px',
+                        height: '80px',
+                        background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+                        borderRadius: '24px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: '0 auto 20px',
-                        boxShadow: '0 10px 30px rgba(229, 57, 53, 0.3)',
-                        transform: 'rotate(-5deg)'
+                        boxShadow: '0 15px 30px rgba(239, 68, 68, 0.35)',
+                        transform: 'rotate(-4deg)'
                     }}>
                         <span style={{
                             color: 'white',
-                            fontSize: '32px',
-                            fontWeight: 'bold',
-                            fontFamily: 'system-ui, -apple-system, sans-serif'
+                            fontSize: '40px',
+                            fontWeight: '900',
+                            fontFamily: "'Inter', sans-serif"
                         }}>H</span>
                     </div>
-                    <Title level={3} style={{ margin: '0 0 4px', fontWeight: '700' }}>Hardware Store</Title>
-                    <Text type="secondary" style={{ fontSize: '13px' }}>Inventory Management System</Text>
+                    <Title level={2} style={{ margin: '0 0 4px', fontWeight: '800', letterSpacing: '-1px' }}>Hardware Store</Title>
+                    <Text style={{ fontSize: '15px', color: '#64748b', fontWeight: 500 }}>Global Inventory Control</Text>
                 </div>
 
                 <Tabs
