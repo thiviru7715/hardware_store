@@ -164,9 +164,10 @@ const Dashboard = () => {
         }}>
             {/* ── Stats Row ──────────────────────────────────── */}
             <div style={{
-                display: 'flex',
-                gap: '12px',
-                flexWrap: 'wrap',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '20px',
+                marginBottom: '8px'
             }}>
                 <StatCard
                     icon={<AppstoreOutlined />}
