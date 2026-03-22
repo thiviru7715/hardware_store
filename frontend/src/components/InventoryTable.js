@@ -162,37 +162,41 @@ function InventoryTable() {
     const MobileItemCard = ({ item }) => (
         <Card
             style={{
-                marginBottom: '12px',
-                borderRadius: '16px',
-                border: 'none',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                marginBottom: '16px',
+                borderRadius: '20px',
+                border: '1px solid rgba(0,0,0,0.03)',
+                boxShadow: '0 10px 15px -3px rgba(0,0,0,0.04)',
+                background: '#fff',
+                overflow: 'hidden',
             }}
-            bodyStyle={{ padding: '16px' }}
+            bodyStyle={{ padding: '20px' }}
         >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                 <div style={{ flex: 1 }}>
-                    <Text strong style={{ fontSize: '16px', display: 'block', marginBottom: '4px' }}>
+                    <Text strong style={{ fontSize: '18px', display: 'block', marginBottom: '2px', color: '#111827', letterSpacing: '-0.5px' }}>
                         {item.name}
                     </Text>
                     <Text style={{
-                        fontSize: '20px',
-                        fontWeight: '700',
-                        color: '#e53935',
-                        display: 'block'
+                        fontSize: '22px',
+                        fontWeight: '800',
+                        color: '#ef4444',
+                        display: 'block',
+                        letterSpacing: '-1px'
                     }}>
-                        Rs. {Number(item.price)?.toFixed(2)}
+                        Rs. {Number(item.price)?.toLocaleString('en-LK', { minimumFractionDigits: 2 })}
                     </Text>
                 </div>
                 <Tag
-                    color={item.quantity > 10 ? 'green' : item.quantity > 0 ? 'orange' : 'red'}
+                    bordered={false}
+                    color={item.quantity > 10 ? 'success' : item.quantity > 0 ? 'warning' : 'error'}
                     style={{
-                        fontSize: '14px',
+                        fontSize: '13px',
                         padding: '4px 12px',
-                        borderRadius: '12px',
-                        fontWeight: '600'
+                        borderRadius: '8px',
+                        fontWeight: '700'
                     }}
                 >
-                    {item.quantity} in stock
+                    {item.quantity} units
                 </Tag>
             </div>
 
