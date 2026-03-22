@@ -161,32 +161,33 @@ const SettingsPage = ({ user }) => {
                 <Divider style={{ margin: '24px 0' }} />
 
                 <div style={{
-                    background: '#f8f9fa',
-                    borderRadius: '12px',
-                    padding: '16px',
+                    background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
+                    borderRadius: '16px',
+                    padding: '20px',
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: '12px'
+                    gap: '16px',
+                    border: '1px solid rgba(0,0,0,0.02)'
                 }}>
                     <div style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '50%',
-                        background: '#e6f7ff',
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '10px',
+                        background: 'rgba(59, 130, 246, 0.1)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexShrink: 0
                     }}>
-                        <SafetyOutlined style={{ color: '#1890ff' }} />
+                        <SafetyOutlined style={{ color: '#3b82f6', fontSize: '18px' }} />
                     </div>
                     <div>
-                        <Text strong style={{ display: 'block', marginBottom: '4px' }}>
-                            Quick Tip
+                        <Text strong style={{ display: 'block', marginBottom: '4px', fontSize: '14px', color: '#1e293b' }}>
+                            Security Recommendation
                         </Text>
-                        <Text type="secondary" style={{ fontSize: '13px' }}>
-                            Use the PIN Login tab on the login page for faster access.
-                            Your PIN should be easy to remember but hard to guess.
+                        <Text style={{ fontSize: '13px', color: '#64748b', lineHeight: '1.5' }}>
+                            Enable PIN access for ultra-fast dashboard unlocking. 
+                            Store your credentials in a secure password manager.
                         </Text>
                     </div>
                 </div>
