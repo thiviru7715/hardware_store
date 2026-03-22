@@ -60,23 +60,36 @@ const ItemCard = ({ item, index }) => {
     return (
         <div style={{
             background: '#fff',
-            borderRadius: '14px',
-            padding: '14px 16px',
+            borderRadius: '16px',
+            padding: '16px 20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '10px',
-            boxShadow: '0 1px 6px rgba(0,0,0,0.05)',
-            borderLeft: isLow ? '4px solid #ff4d4f' : '4px solid transparent',
-            transition: 'box-shadow 0.2s',
+            gap: '16px',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01)',
+            border: isLow ? '1px solid #fee2e2' : '1px solid #f3f4f6',
+            background: isLow ? 'linear-gradient(to right, #fff, #fff5f5)' : '#fff',
+            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+            cursor: 'pointer',
+        }}
+        onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateX(4px)';
+            e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02)';
+            e.currentTarget.style.borderColor = isLow ? '#fecaca' : '#e5e7eb';
+        }}
+        onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateX(0)';
+            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01)';
+            e.currentTarget.style.borderColor = isLow ? '#fee2e2' : '#f3f4f6';
         }}>
             {/* Left: index + name */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', minWidth: 0 }}>
                 <div style={{
-                    width: 34, height: 34, borderRadius: '10px',
-                    background: 'linear-gradient(135deg,#e53935 0%,#ff6b6b 100%)',
+                    width: 38, height: 38, borderRadius: '12px',
+                    background: isLow ? 'linear-gradient(135deg,#ef4444 0%,#f87171 100%)' : 'linear-gradient(135deg,#6b7280 0%,#9ca3af 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#fff', fontWeight: 700, fontSize: 13, flexShrink: 0,
+                    color: '#fff', fontWeight: 700, fontSize: '14px', flexShrink: 0,
+                    boxShadow: isLow ? '0 4px 10px rgba(239, 68, 68, 0.25)' : 'none',
                 }}>
                     {index + 1}
                 </div>
@@ -84,24 +97,31 @@ const ItemCard = ({ item, index }) => {
                     <Text strong style={{
                         display: 'block', whiteSpace: 'nowrap',
                         overflow: 'hidden', textOverflow: 'ellipsis',
-                        color: '#1a1a2e', fontSize: 14,
+                        color: '#111827', fontSize: '15px',
+                        letterSpacing: '-0.3px',
                     }}>
                         {item.name}
                     </Text>
-                    {isLow && (
-                        <Tag color="error" style={{ marginTop: 2, fontSize: 10 }}>Low Stock</Tag>
-                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
+                        <Text style={{ color: '#6b7280', fontSize: '12px' }}>ID: {item.id?.substring(0, 8) || 'N/A'}</Text>
+                        {isLow && (
+                            <Tag bordered={false} color="error" style={{ fontSize: '10px', borderRadius: '6px', fontWeight: 600 }}>Low Stock</Tag>
+                        )}
+                    </div>
                 </div>
             </div>
 
             {/* Right: price + qty */}
             <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <Text strong style={{ display: 'block', color: '#e53935', fontSize: 15 }}>
-                    Rs.{Number(item.price)?.toFixed(2) || '0.00'}
+                <Text strong style={{ display: 'block', color: '#ef4444', fontSize: '16px', fontWeight: 700 }}>
+                    Rs.{Number(item.price)?.toLocaleString('en-LK', { minimumFractionDigits: 2 })}
                 </Text>
-                <Text style={{ color: '#8c8c8c', fontSize: 12 }}>
-                    Qty: {item.quantity}
-                </Text>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '4px' }}>
+                    <InboxOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
+                    <Text style={{ color: '#6b7280', fontSize: '13px', fontWeight: 500 }}>
+                        {item.quantity} units
+                    </Text>
+                </div>
             </div>
         </div>
     );
