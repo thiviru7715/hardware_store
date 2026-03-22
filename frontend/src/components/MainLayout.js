@@ -40,27 +40,28 @@ const MainLayout = ({ user, onLogout }) => {
     const SidebarContent = () => (
         <>
             <div style={{
-                padding: '24px 20px',
+                padding: '32px 24px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
-                borderBottom: '1px solid rgba(255,255,255,0.1)'
+                gap: '14px',
+                borderBottom: '1px solid rgba(255,255,255,0.05)'
             }}>
                 <div style={{
-                    width: '40px',
-                    height: '40px',
-                    background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                    borderRadius: '12px',
+                    width: '44px',
+                    height: '44px',
+                    background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+                    borderRadius: '14px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 4px 12px rgba(229, 57, 53, 0.3)'
+                    boxShadow: '0 8px 20px rgba(239, 68, 68, 0.4)',
+                    transform: 'rotate(-3deg)'
                 }}>
-                    <ShopOutlined style={{ color: 'white', fontSize: '20px' }} />
+                    <span style={{ color: 'white', fontWeight: 900, fontSize: '22px' }}>H</span>
                 </div>
                 <div>
-                    <Title level={5} style={{ color: 'white', margin: 0 }}>Hardware Store</Title>
-                    <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px' }}>Inventory System</Text>
+                    <Title level={4} style={{ color: 'white', margin: 0, letterSpacing: '-0.5px', fontWeight: 800 }}>Hardware</Title>
+                    <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Inventory</Text>
                 </div>
             </div>
 
