@@ -193,17 +193,20 @@ const Dashboard = () => {
 
             {/* ── Search ─────────────────────────────────────── */}
             <Input
-                prefix={<SearchOutlined style={{ color: '#bfbfbf' }} />}
-                placeholder="Search items…"
+                prefix={<SearchOutlined style={{ color: '#94a3b8', marginRight: '4px' }} />}
+                placeholder="Search inventory by name..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 allowClear
                 style={{
-                    borderRadius: '12px',
-                    height: '44px',
-                    fontSize: 15,
-                    boxShadow: '0 1px 6px rgba(0,0,0,0.06)',
-                    border: '1.5px solid #f0f0f0',
+                    borderRadius: '16px',
+                    height: '52px',
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+                    border: '1px solid rgba(0,0,0,0.05)',
+                    background: '#fff',
+                    padding: '0 20px',
                 }}
             />
 
