@@ -191,17 +191,18 @@ const MainLayout = ({ user, onLogout }) => {
 
             <Layout>
                 <Header style={{
-                    padding: '0 16px',
-                    background: '#fff',
+                    padding: '0 24px',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(10px)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    borderBottom: '1px solid #f0f0f0',
-                    height: '64px',
+                    borderBottom: '1px solid rgba(0,0,0,0.05)',
+                    height: '68px',
                     position: 'sticky',
                     top: 0,
                     zIndex: 100,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.03)'
                 }}>
                     <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                         {/* Mobile Menu Button */}
