@@ -214,8 +214,9 @@ const Dashboard = () => {
             {/* ── Items List ─────────────────────────────────── */}
             <div style={{
                 background: '#fff',
-                borderRadius: '16px',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+                borderRadius: '24px',
+                boxShadow: '0 10px 30px -5px rgba(0,0,0,0.04), 0 8px 10px -6px rgba(0,0,0,0.04)',
+                border: '1px solid rgba(0,0,0,0.02)',
                 overflow: 'hidden',
                 flex: 1,
                 display: 'flex',
