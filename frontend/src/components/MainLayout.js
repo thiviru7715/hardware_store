@@ -151,9 +151,11 @@ const MainLayout = ({ user, onLogout }) => {
                 width={260}
                 theme="dark"
                 style={{
-                    background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)',
+                    background: 'linear-gradient(180deg, #111827 0%, #1f2937 100%)',
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    borderRight: '1px solid rgba(255,255,255,0.05)',
+                    boxShadow: '4px 0 20px rgba(0,0,0,0.2)',
                 }}
                 breakpoint="lg"
                 collapsedWidth="0"
