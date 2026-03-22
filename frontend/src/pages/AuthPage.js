@@ -346,18 +346,22 @@ const AuthPage = ({ onLogin }) => {
             </Card>
 
             <style>{`
+                .ant-tabs-nav {
+                    marginBottom: '24px' !important;
+                }
                 .ant-tabs-tab {
-                    padding: 8px 12px !important;
-                    font-size: 13px !important;
+                    padding: 12px 16px !important;
+                    font-size: 14px !important;
+                    transition: all 0.3s !important;
                 }
                 .ant-tabs-tab-active .ant-tabs-tab-btn {
-                    color: #e53935 !important;
-                    font-weight: 600 !important;
+                    color: #ef4444 !important;
+                    font-weight: 700 !important;
                 }
                 .ant-tabs-ink-bar {
-                    background: linear-gradient(90deg, #e53935 0%, #ff6b6b 100%) !important;
-                    height: 3px !important;
-                    border-radius: 2px !important;
+                    background: linear-gradient(90deg, #ef4444 0%, #f1f5f9 100%) !important;
+                    height: 4px !important;
+                    border-radius: 4px !important;
                 }
                 .ant-input-affix-wrapper:focus,
                 .ant-input-affix-wrapper-focused {
