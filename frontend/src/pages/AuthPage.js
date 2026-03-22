@@ -198,17 +198,16 @@ const AuthPage = ({ onLogin }) => {
                 </span>
             ),
             children: (
-                <Form form={registerForm} layout="vertical" onFinish={handleRegister} style={{ padding: '12px 0' }}>
+                <Form form={registerForm} layout="vertical" onFinish={handleRegister} style={{ padding: '24px 0 0' }}>
                     <Form.Item
                         name="name"
                         rules={[{ required: true, message: 'Please enter your name' }]}
-                        style={{ marginBottom: '12px' }}
                     >
                         <Input
-                            prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
+                            prefix={<UserOutlined style={{ color: '#94a3b8', marginRight: '8px' }} />}
                             placeholder="Full Name"
                             size="large"
-                            style={{ borderRadius: '10px', height: '44px' }}
+                            style={{ borderRadius: '14px', height: '48px', background: '#f8fafc' }}
                         />
                     </Form.Item>
                     <Form.Item
@@ -217,13 +216,12 @@ const AuthPage = ({ onLogin }) => {
                             { required: true, message: 'Please enter your email' },
                             { type: 'email', message: 'Please enter a valid email' }
                         ]}
-                        style={{ marginBottom: '12px' }}
                     >
                         <Input
-                            prefix={<MailOutlined style={{ color: '#bfbfbf' }} />}
+                            prefix={<MailOutlined style={{ color: '#94a3b8', marginRight: '8px' }} />}
                             placeholder="Email address"
                             size="large"
-                            style={{ borderRadius: '10px', height: '44px' }}
+                            style={{ borderRadius: '14px', height: '48px', background: '#f8fafc' }}
                         />
                     </Form.Item>
                     <Form.Item
@@ -232,39 +230,15 @@ const AuthPage = ({ onLogin }) => {
                             { required: true, message: 'Please enter your password' },
                             { min: 6, message: 'Password must be at least 6 characters' }
                         ]}
-                        style={{ marginBottom: '12px' }}
                     >
                         <Input.Password
-                            prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
+                            prefix={<LockOutlined style={{ color: '#94a3b8', marginRight: '8px' }} />}
                             placeholder="Password"
                             size="large"
-                            style={{ borderRadius: '10px', height: '44px' }}
+                            style={{ borderRadius: '14px', height: '48px', background: '#f8fafc' }}
                         />
                     </Form.Item>
-                    <Form.Item
-                        name="confirmPassword"
-                        dependencies={['password']}
-                        rules={[
-                            { required: true, message: 'Please confirm your password' },
-                            ({ getFieldValue }) => ({
-                                validator(_, value) {
-                                    if (!value || getFieldValue('password') === value) {
-                                        return Promise.resolve();
-                                    }
-                                    return Promise.reject(new Error('Passwords do not match'));
-                                },
-                            }),
-                        ]}
-                        style={{ marginBottom: '16px' }}
-                    >
-                        <Input.Password
-                            prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
-                            placeholder="Confirm Password"
-                            size="large"
-                            style={{ borderRadius: '10px', height: '44px' }}
-                        />
-                    </Form.Item>
-                    <Form.Item style={{ marginBottom: 0 }}>
+                    <Form.Item style={{ marginBottom: 0, marginTop: '12px' }}>
                         <Button
                             type="primary"
                             htmlType="submit"
@@ -272,15 +246,16 @@ const AuthPage = ({ onLogin }) => {
                             size="large"
                             loading={loading}
                             style={{
-                                height: '48px',
-                                borderRadius: '10px',
-                                fontSize: '15px',
-                                fontWeight: '600',
-                                background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                                border: 'none'
+                                height: '52px',
+                                borderRadius: '14px',
+                                fontSize: '16px',
+                                fontWeight: '700',
+                                background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+                                border: 'none',
+                                boxShadow: '0 8px 15px -3px rgba(239, 68, 68, 0.25)'
                             }}
                         >
-                            Create Account
+                            Create Store Account
                         </Button>
                     </Form.Item>
                 </Form>
