@@ -264,12 +264,12 @@ function InventoryTable() {
     );
 
     return (
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 8px' }}>
             {/* Header Controls */}
             <div style={{
-                marginBottom: 16,
+                marginBottom: 24,
                 display: 'flex',
-                gap: 12,
+                gap: 16,
                 flexWrap: 'wrap',
                 alignItems: 'center',
                 justifyContent: 'space-between'
