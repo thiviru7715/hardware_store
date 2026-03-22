@@ -15,8 +15,10 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("App mounted");
     // Check if user is already logged in
     const currentUser = usersApi.getCurrentUser();
+    console.log("Current user from storage:", currentUser);
     if (currentUser) {
       setUser(currentUser);
     }
