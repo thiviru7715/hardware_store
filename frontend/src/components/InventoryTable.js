@@ -316,11 +316,13 @@ function InventoryTable() {
             ) : (
                 <Card
                     style={{
-                        borderRadius: '16px',
-                        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                        border: 'none'
+                        borderRadius: '24px',
+                        boxShadow: '0 10px 30px -5px rgba(0,0,0,0.04), 0 8px 10px -6px rgba(0,0,0,0.04)',
+                        border: '1px solid rgba(0,0,0,0.02)',
+                        overflow: 'hidden',
+                        background: '#fff',
                     }}
-                    bodyStyle={{ padding: '20px' }}
+                    bodyStyle={{ padding: '0' }}
                 >
                     <Table
                         rowKey="id"
@@ -330,9 +332,11 @@ function InventoryTable() {
                         pagination={{
                             pageSize: 10,
                             responsive: true,
-                            showSizeChanger: false
+                            showSizeChanger: false,
+                            position: ['bottomCenter'],
+                            style: { padding: '16px 0' }
                         }}
-                        style={{ borderRadius: '12px', overflow: 'hidden' }}
+                        style={{ borderRadius: '12px' }}
                     />
                 </Card>
             )}
