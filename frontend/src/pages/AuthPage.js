@@ -293,20 +293,22 @@ const AuthPage = ({ onLogin }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-            padding: '16px',
+            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+            padding: '24px',
             boxSizing: 'border-box'
         }}>
             <Card
                 style={{
                     width: '100%',
-                    maxWidth: 420,
-                    borderRadius: '24px',
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
-                    border: 'none',
-                    overflow: 'hidden'
+                    maxWidth: 440,
+                    borderRadius: '32px',
+                    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    overflow: 'hidden',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
                 }}
-                bodyStyle={{ padding: '32px 24px 24px' }}
+                bodyStyle={{ padding: '40px 32px' }}
             >
                 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                     <div style={{
