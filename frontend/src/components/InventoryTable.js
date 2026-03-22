@@ -109,52 +109,49 @@ function InventoryTable() {
 
     const columns = [
         {
-            title: "Item",
+            title: "Item Name",
             dataIndex: "name",
             ellipsis: true,
+            render: (text) => <Text strong style={{ color: '#111827' }}>{text}</Text>,
         },
         {
             title: "Price",
             dataIndex: "price",
-            render: (price) => `Rs. ${Number(price)?.toFixed(2) || '0.00'}`,
-            width: 110,
+            render: (price) => (
+                <Text strong style={{ color: '#ef4444' }}>
+                    Rs. {Number(price)?.toLocaleString('en-LK', { minimumFractionDigits: 2 })}
+                </Text>
+            ),
+            width: 140,
         },
         {
-            title: "Qty",
+            title: "Inventory",
             dataIndex: "quantity",
-            width: 60,
+            width: 120,
+            render: (qty) => (
+                <Tag bordered={false} color={qty > 10 ? 'success' : qty > 0 ? 'warning' : 'error'} style={{ borderRadius: '6px', fontWeight: 600 }}>
+                    {qty} units
+                </Tag>
+            )
         },
         {
-            title: "Actions",
-            width: 180,
+            title: "Quick Actions",
+            width: 200,
+            align: 'right',
             render: (_, record) => (
-                <Space size="small" wrap>
+                <Space size="middle">
                     <Button
-                        size="small"
-                        icon={<PlusOutlined />}
-                        onClick={() => increase(record.id)}
-                        style={{ borderRadius: '8px' }}
-                    />
-                    <Button
-                        size="small"
-                        danger
-                        icon={<MinusOutlined />}
-                        onClick={() => decrease(record.id)}
-                        style={{ borderRadius: '8px' }}
-                    />
-                    <Button
-                        size="small"
+                        type="text"
                         icon={<EditOutlined />}
                         onClick={() => openEditModal(record)}
-                        style={{ borderRadius: '8px', color: '#1890ff', borderColor: '#1890ff' }}
+                        style={{ color: '#3b82f6', background: '#eff6ff', borderRadius: '8px' }}
                     />
                     <Button
-                        size="small"
-                        type="primary"
+                        type="text"
                         danger
                         icon={<DeleteOutlined />}
                         onClick={() => deleteItem(record.id)}
-                        style={{ borderRadius: '8px' }}
+                        style={{ background: '#fef2f2', borderRadius: '8px' }}
                     />
                 </Space>
             )
