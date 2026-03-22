@@ -233,27 +233,29 @@ const SalaryPage = () => {
                 <Card
                     style={{
                         width: '100%',
-                        maxWidth: '400px',
-                        borderRadius: '20px',
-                        boxShadow: '0 10px 40px rgba(0,0,0,0.1)'
+                        maxWidth: '420px',
+                        borderRadius: '32px',
+                        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                        border: '1px solid rgba(0,0,0,0.05)',
+                        background: '#fff'
                     }}
                 >
-                    <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '32px' }}>
                         <div style={{
-                            width: '80px',
-                            height: '80px',
-                            background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                            borderRadius: '50%',
+                            width: '90px',
+                            height: '90px',
+                            background: 'rgba(239, 68, 68, 0.05)',
+                            borderRadius: '28px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            margin: '0 auto 16px',
-                            boxShadow: '0 8px 24px rgba(229, 57, 53, 0.3)'
+                            margin: '0 auto 20px',
+                            border: '1px solid rgba(239, 68, 68, 0.1)'
                         }}>
-                            <SafetyOutlined style={{ fontSize: '36px', color: 'white' }} />
+                            <SafetyOutlined style={{ fontSize: '42px', color: '#ef4444' }} />
                         </div>
-                        <Title level={3} style={{ margin: 0 }}>Salary Access</Title>
-                        <Text type="secondary">Enter PIN to view salary information</Text>
+                        <Title level={2} style={{ margin: '0 0 4px', fontWeight: 800, letterSpacing: '-1px' }}>Salary Vault</Title>
+                        <Text style={{ color: '#64748b', fontSize: '15px', fontWeight: 500 }}>Authorization required to view payroll</Text>
                     </div>
 
                     <Form
