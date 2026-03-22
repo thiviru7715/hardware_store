@@ -66,22 +66,22 @@ const AuthPage = ({ onLogin }) => {
             ),
             children: (
                 <div style={{ padding: '20px 0' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '32px' }}>
                         <div style={{
-                            width: '80px',
-                            height: '80px',
-                            background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                            borderRadius: '50%',
+                            width: '84px',
+                            height: '84px',
+                            background: 'rgba(239, 68, 68, 0.05)',
+                            borderRadius: '24px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            margin: '0 auto 16px',
-                            boxShadow: '0 8px 24px rgba(229, 57, 53, 0.3)'
+                            margin: '0 auto 20px',
+                            border: '1px solid rgba(239, 68, 68, 0.1)',
                         }}>
-                            <LockOutlined style={{ fontSize: '32px', color: 'white' }} />
+                            <LockOutlined style={{ fontSize: '36px', color: '#ef4444' }} />
                         </div>
-                        <Text type="secondary" style={{ fontSize: '14px' }}>
-                            Enter your 4-digit PIN to login
+                        <Text style={{ fontSize: '15px', color: '#64748b', fontWeight: 500 }}>
+                            Secure Pin Access
                         </Text>
                     </div>
                     <Form form={pinForm} layout="vertical" onFinish={handlePinLogin}>
@@ -93,17 +93,18 @@ const AuthPage = ({ onLogin }) => {
                             ]}
                         >
                             <Input.Password
-                                placeholder="• • • •"
+                                placeholder="0000"
                                 maxLength={4}
                                 size="large"
                                 style={{
                                     textAlign: 'center',
-                                    letterSpacing: '16px',
-                                    fontSize: '28px',
-                                    fontWeight: 'bold',
-                                    height: '64px',
-                                    borderRadius: '12px',
-                                    border: '2px solid #e0e0e0',
+                                    letterSpacing: '24px',
+                                    fontSize: '32px',
+                                    fontWeight: '900',
+                                    height: '72px',
+                                    borderRadius: '20px',
+                                    background: '#f8fafc',
+                                    border: '1px solid #e2e8f0',
                                     paddingLeft: '24px'
                                 }}
                             />
@@ -116,16 +117,16 @@ const AuthPage = ({ onLogin }) => {
                                 size="large"
                                 loading={loading}
                                 style={{
-                                    height: '52px',
-                                    borderRadius: '12px',
+                                    height: '56px',
+                                    borderRadius: '16px',
                                     fontSize: '16px',
-                                    fontWeight: '600',
-                                    background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
+                                    fontWeight: '700',
+                                    background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
                                     border: 'none',
-                                    boxShadow: '0 4px 16px rgba(229, 57, 53, 0.3)'
+                                    boxShadow: '0 10px 15px -3px rgba(239, 68, 68, 0.3)'
                                 }}
                             >
-                                Unlock
+                                Unlock Dashboard
                             </Button>
                         </Form.Item>
                     </Form>
