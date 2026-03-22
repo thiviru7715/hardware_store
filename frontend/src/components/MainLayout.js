@@ -299,14 +299,16 @@ const MainLayout = ({ user, onLogout }) => {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: '60px',
-                background: '#fff',
-                borderTop: '1px solid #f0f0f0',
+                height: '68px',
+                background: 'rgba(255, 255, 255, 0.9)',
+                backdropFilter: 'blur(10px)',
+                borderTop: '1px solid rgba(0,0,0,0.05)',
                 display: 'none',
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 zIndex: 200,
-                boxShadow: '0 -2px 12px rgba(0,0,0,0.08)',
+                boxShadow: '0 -4px 12px rgba(0,0,0,0.05)',
+                padding: '0 12px'
             }}>
                 {menuItems.map(item => {
                     const active = location.pathname === item.key;
@@ -318,18 +320,19 @@ const MainLayout = ({ user, onLogout }) => {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                                gap: '2px',
+                                gap: '4px',
                                 border: 'none',
                                 background: 'none',
                                 cursor: 'pointer',
-                                padding: '6px 12px',
-                                borderRadius: '12px',
-                                transition: 'background 0.2s',
-                                color: active ? '#e53935' : '#8c8c8c',
+                                padding: '8px 16px',
+                                borderRadius: '16px',
+                                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                color: active ? '#ef4444' : '#64748b',
+                                background: active ? 'rgba(239, 68, 68, 0.08)' : 'transparent',
                             }}
                         >
-                            {React.cloneElement(item.icon, { style: { fontSize: 20 } })}
-                            <span style={{ fontSize: 10, fontWeight: active ? 600 : 400 }}>{item.label}</span>
+                            {React.cloneElement(item.icon, { style: { fontSize: 24 } })}
+                            <span style={{ fontSize: 11, fontWeight: active ? 700 : 500 }}>{item.label}</span>
                         </button>
                     );
                 })}
