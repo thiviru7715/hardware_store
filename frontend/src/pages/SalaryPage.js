@@ -316,37 +316,41 @@ const SalaryPage = () => {
     return (
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             {/* Summary Cards */}
-            <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+            <Row gutter={[20, 20]} style={{ marginBottom: '32px' }}>
                 <Col xs={24} sm={12}>
                     <Card
                         style={{
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                            borderRadius: '16px',
-                            border: 'none'
+                            background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+                            borderRadius: '24px',
+                            border: 'none',
+                            boxShadow: '0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 10px 10px -6px rgba(79, 70, 229, 0.04)',
+                            overflow: 'hidden',
                         }}
                     >
                         <Statistic
-                            title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>Total Employees</Text>}
+                            title={<Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontWeight: 500 }}>Total Active Employees</Text>}
                             value={employees.length}
-                            prefix={<TeamOutlined style={{ color: 'white' }} />}
-                            valueStyle={{ color: 'white', fontWeight: 'bold' }}
+                            prefix={<TeamOutlined style={{ color: 'white', marginRight: '8px' }} />}
+                            valueStyle={{ color: 'white', fontWeight: 800, fontSize: '32px', letterSpacing: '-1px' }}
                         />
                     </Card>
                 </Col>
                 <Col xs={24} sm={12}>
                     <Card
                         style={{
-                            background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
-                            borderRadius: '16px',
-                            border: 'none'
+                            background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
+                            borderRadius: '24px',
+                            border: 'none',
+                            boxShadow: '0 20px 25px -5px rgba(5, 150, 105, 0.1), 0 10px 10px -6px rgba(5, 150, 105, 0.04)',
+                            overflow: 'hidden',
                         }}
                     >
                         <Statistic
-                            title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>Total Monthly Salary</Text>}
+                            title={<Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontWeight: 500 }}>Total Monthly Expenditure</Text>}
                             value={totalSalary}
                             precision={2}
-                            prefix={<span style={{ color: 'white' }}>Rs.</span>}
-                            valueStyle={{ color: 'white', fontWeight: 'bold' }}
+                            prefix={<span style={{ color: 'white', fontSize: '20px', marginRight: '4px' }}>Rs.</span>}
+                            valueStyle={{ color: 'white', fontWeight: 800, fontSize: '32px', letterSpacing: '-1px' }}
                         />
                     </Card>
                 </Col>
