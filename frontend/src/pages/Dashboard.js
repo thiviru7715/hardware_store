@@ -15,29 +15,41 @@ const { Title, Text } = Typography;
 const StatCard = ({ icon, label, value, color, bg }) => (
     <div style={{
         background: '#fff',
-        borderRadius: '16px',
-        padding: '16px',
+        borderRadius: '20px',
+        padding: '20px',
         display: 'flex',
         alignItems: 'center',
-        gap: '14px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
-        flex: '1 1 140px',
+        gap: '18px',
+        boxShadow: '0 10px 25px -5px rgba(0,0,0,0.04), 0 8px 10px -6px rgba(0,0,0,0.04)',
+        border: '1px solid rgba(0,0,0,0.02)',
+        flex: '1 1 200px',
         minWidth: 0,
+        transition: 'transform 0.2s, box-shadow 0.2s',
+        cursor: 'pointer',
+    }}
+    onMouseEnter={e => {
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0,0,0,0.06), 0 10px 10px -6px rgba(0,0,0,0.04)';
+    }}
+    onMouseLeave={e => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(0,0,0,0.04), 0 8px 10px -6px rgba(0,0,0,0.04)';
     }}>
         <div style={{
-            width: 46, height: 46,
-            borderRadius: '12px',
+            width: 52, height: 52,
+            borderRadius: '14px',
             background: bg,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
+            boxShadow: `0 4px 12px ${color}20`,
         }}>
-            {React.cloneElement(icon, { style: { color, fontSize: 22 } })}
+            {React.cloneElement(icon, { style: { color, fontSize: 24 } })}
         </div>
         <div style={{ minWidth: 0 }}>
-            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block' }}>{label}</Text>
-            <Text strong style={{ fontSize: 20, color: '#1a1a2e', lineHeight: 1.2 }}>{value}</Text>
+            <Text style={{ color: '#6b7280', fontSize: '13px', fontWeight: 500, display: 'block', marginBottom: '4px' }}>{label}</Text>
+            <Text strong style={{ fontSize: '24px', color: '#111827', lineHeight: 1, letterSpacing: '-0.5px' }}>{value}</Text>
         </div>
     </div>
 );
