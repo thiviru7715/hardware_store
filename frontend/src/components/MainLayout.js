@@ -70,15 +70,19 @@ const MainLayout = ({ user, onLogout }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '12px',
-                background: 'rgba(255,255,255,0.05)',
-                margin: '12px',
-                borderRadius: '12px'
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.05)',
+                margin: '16px',
+                borderRadius: '16px',
+                boxShadow: 'inset 0 0 20px rgba(255,255,255,0.02)',
             }}>
                 <Avatar
-                    size={40}
+                    size={44}
                     style={{
-                        background: 'linear-gradient(135deg, #e53935 0%, #ff6b6b 100%)',
-                        fontWeight: '600'
+                        background: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+                        fontWeight: '700',
+                        fontSize: '18px',
+                        flexShrink: 0,
                     }}
                 >
                     {user?.name?.charAt(0).toUpperCase() || 'U'}
@@ -87,7 +91,8 @@ const MainLayout = ({ user, onLogout }) => {
                     <Text style={{
                         color: 'white',
                         display: 'block',
-                        fontWeight: '500',
+                        fontWeight: '600',
+                        fontSize: '14px',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis'
@@ -95,12 +100,13 @@ const MainLayout = ({ user, onLogout }) => {
                         {user?.name || 'User'}
                     </Text>
                     <Text style={{
-                        color: 'rgba(255,255,255,0.5)',
-                        fontSize: '11px',
+                        color: 'rgba(255,255,255,0.4)',
+                        fontSize: '12px',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        display: 'block'
+                        display: 'block',
+                        marginTop: '-2px'
                     }}>
                         {user?.email || 'email@example.com'}
                     </Text>
