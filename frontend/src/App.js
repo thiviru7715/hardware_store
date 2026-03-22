@@ -40,7 +40,25 @@ function App() {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#e53935', // Red theme
+          colorPrimary: '#ef4444', // Premium Red (Rose-600)
+          borderRadius: 12,
+          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          colorBgBase: '#ffffff',
+          colorTextBase: '#1f2937',
+        },
+        components: {
+          Button: {
+            borderRadius: 10,
+            controlHeight: 40,
+            fontWeight: 600,
+          },
+          Card: {
+            borderRadius: 16,
+          },
+          Input: {
+            borderRadius: 10,
+            controlHeight: 44,
+          },
         },
       }}
     >
