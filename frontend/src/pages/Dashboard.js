@@ -219,17 +219,29 @@ const Dashboard = () => {
             }}>
                 {/* List header */}
                 <div style={{
-                    padding: '14px 16px',
-                    borderBottom: '1px solid #f0f0f0',
+                    padding: '24px 20px',
+                    borderBottom: '1px solid rgba(0,0,0,0.03)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    background: 'linear-gradient(to right, #ffffff, #fafafa)',
                 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <InboxOutlined style={{ color: '#e53935', fontSize: 18 }} />
-                        <Title level={5} style={{ margin: 0 }}>Item Inventory</Title>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{
+                            width: 38, height: 38, borderRadius: '10px',
+                            background: 'rgba(239, 68, 68, 0.08)',
+                            color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                        }}>
+                            <InboxOutlined style={{ fontSize: 20 }} />
+                        </div>
+                        <div>
+                            <Title level={4} style={{ margin: 0, letterSpacing: '-0.5px', fontSize: 18 }}>Product Inventory</Title>
+                            <Text style={{ fontSize: 12, color: '#94a3b8', fontWeight: 500 }}>Real-time stock monitoring</Text>
+                        </div>
                     </div>
-                    <Tag style={{ borderRadius: 20, fontSize: 12 }}>{filtered.length} items</Tag>
+                    <Tag bordered={false} style={{ borderRadius: 20, fontSize: 14, padding: '4px 12px', background: '#f1f5f9', color: '#475569', fontWeight: 600 }}>
+                        {filtered.length} Items
+                    </Tag>
                 </div>
 
                 {/* Scrollable list */}
