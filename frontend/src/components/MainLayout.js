@@ -11,7 +11,8 @@ import {
     CloseOutlined,
     LogoutOutlined,
     SafetyOutlined,
-    DollarOutlined
+    DollarOutlined,
+    ToolOutlined
 } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ const MainLayout = ({ user, onLogout }) => {
     const menuItems = [
         { key: '/', icon: <AppstoreOutlined />, label: 'Dashboard' },
         { key: '/reports', icon: <FileTextOutlined />, label: 'Reports' },
+        { key: '/machinery', icon: <ToolOutlined />, label: 'Tool Shop' },
         { key: '/salaries', icon: <DollarOutlined />, label: 'Salaries' },
         { key: '/settings', icon: <SettingOutlined />, label: 'Settings' },
     ];
@@ -245,6 +247,7 @@ const MainLayout = ({ user, onLogout }) => {
                         <Title level={4} style={{ margin: 0 }} className="page-title">
                             {location.pathname === '/' && 'Dashboard'}
                             {location.pathname === '/reports' && 'Reports'}
+                            {location.pathname === '/machinery' && 'Tool Shop – Machinery'}
                             {location.pathname === '/salaries' && 'Salaries'}
                             {location.pathname === '/settings' && 'Settings'}
                         </Title>
@@ -324,7 +327,9 @@ const MainLayout = ({ user, onLogout }) => {
                                 border: 'none',
                                 background: 'none',
                                 cursor: 'pointer',
-                                padding: '8px 16px',
+                                padding: '8px 4px',
+                                flex: 1,
+                                minWidth: 0,
                                 borderRadius: '16px',
                                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                                 color: active ? '#ef4444' : '#64748b',

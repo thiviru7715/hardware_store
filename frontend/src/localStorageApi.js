@@ -89,4 +89,18 @@ export const employeesApi = {
     }
 };
 
-export default { itemsApi, usersApi, employeesApi };
+// Machinery (Tool Shop) API - connects to backend /machinery endpoints
+export const machineryApi = {
+    getAll: (params = {}) => API.get("/machinery", { params }),
+    getCategories: () => API.get("/machinery/categories"),
+    getPriceHistory: (id) => API.get(`/machinery/${id}/price-history`),
+    create: (data) => API.post("/machinery", data),
+    update: (id, data) => API.put(`/machinery/${id}`, data),
+    increase: (id, amount) => API.put(`/machinery/increase/${id}`, { amount }),
+    decrease: (id, amount) => API.put(`/machinery/decrease/${id}`, { amount }),
+    delete: (id) => API.delete(`/machinery/${id}`),
+    bulkUpdatePrices: (updates, source = "bulk") =>
+        API.put("/machinery/prices/bulk", { updates, source }),
+};
+
+export default { itemsApi, usersApi, employeesApi, machineryApi };

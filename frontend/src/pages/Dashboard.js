@@ -103,7 +103,7 @@ const ItemCard = ({ item, index }) => {
                         {item.name}
                     </Text>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
-                        <Text style={{ color: '#6b7280', fontSize: '12px' }}>ID: {item.id?.substring(0, 8) || 'N/A'}</Text>
+                        <Text style={{ color: '#6b7280', fontSize: '12px' }}>ID: {item.id != null ? String(item.id).substring(0, 8) : 'N/A'}</Text>
                         {isLow && (
                             <Tag bordered={false} color="error" style={{ fontSize: '10px', borderRadius: '6px', fontWeight: 600 }}>Low Stock</Tag>
                         )}

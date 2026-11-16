@@ -1,0 +1,3 @@
+model,price,quantity,name,brand,category
+EXAMPLE-GEN-3500,185000,3,Petrol Generator 3.5kVA,ExampleBrand,Generators
+EXAMPLE-PUMP-2IN,42500,5,2 inch Water Pump,ExampleBrand,Water Pumps

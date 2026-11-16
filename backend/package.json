@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "prices": "node scripts/update-machinery-prices.js data/machinery-prices.csv",
+    "prices:dry": "node scripts/update-machinery-prices.js data/machinery-prices.csv --dry-run"
   },
   "engines": {
     "node": ">=18.0.0"
